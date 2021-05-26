@@ -1,0 +1,14 @@
+version: '3.7'
+services: 
+  aeneas:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes: 
+      - .:/app 
+    # command: python3 -m aeneas.tools.execute_task
+    command: python3 -m aeneas.tools.execute_task test.mp3 test1.txt "task_language=eng|os_task_file_format=json|is_text_type=plain" map.json
+    # command: python3 -m aeneas.tools.execute_task test.mp3 test1.txt "task_language=eng|os_task_file_format=smil|os_task_file_smil_audio_ref=test.mp3|os_task_file_smil_page_ref=test1.txt|is_text_type=unparsed|is_text_unparsed_id_regex=f[0-9]+|is_text_unparsed_id_sort=numeric" map.smil
+    
+#sudo docker-compose run aeneas python3 -m aeneas.tools.execute_task test.mp3 test1.txt "task_language=eng|os_task_file_format=json|is_text_type=plain" map.
+#for running the docker file
